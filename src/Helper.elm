@@ -24,14 +24,8 @@ type alias Language =
 
 language : List Language
 language =
-    [ { name = "Elm"
-      , releaseYear = 2012
-      , currentVersion = "0.19.1"
-      }
-    , { name = "javascript"
-      , releaseYear = 1995
-      , currentVersion = "ECMAScript 2025"
-      }
+    [ { name = "Elm", releaseYear = 2012, currentVersion = "0.19.1" }
+    , { name = "javascript", releaseYear = 1995, currentVersion = "ECMAScript 2025" }
     ]
 
 
@@ -41,29 +35,25 @@ languageNames lista =
 
 
 type alias Students =
-    { name : String, utype : String }
+    { name : String, uType : String }
 
 
 students : List Students
 students =
-    [ { name = "Roberto"
-      , utype = "Student"
-      }
-    , { name = "Mitsiu"
-      , utype = "Professor"
-      }
+    [ { name = "Roberto", uType = "Student" }
+    , { name = "Mitsiu", uType = "Professor" }
     ]
 
 
 onlyStudents : List Students -> List String
 onlyStudents lista2 =
-    List.filterMap
+    List.map
         (\u ->
-            if u.utype == "Student" then
-                Just u.name
+            if u.uType == "Student" then
+                u.name
 
             else
-                Nothing
+                ""
         )
         lista2
 
@@ -74,41 +64,23 @@ type alias Videogame =
 
 videogame : List Videogame
 videogame =
-    [ { title = "Control"
-      , releaseYear = 2019
-      , available = True
-      , downloads = 1234567
-      , genres = [ "Action", "Shooter" ]
-      }
-    , { title = "Ocarina of time"
-      , releaseYear = 1998
-      , available = False
-      , downloads = 12345
-      , genres = [ "Action", "Adventure" ]
-      }
+    [ { title = "Control", releaseYear = 2019, available = True, downloads = 1234567, genres = [ "Action", "Shooter" ] }
+    , { title = "Ocarina of time", releaseYear = 1998, available = False, downloads = 12345, genres = [ "Action", "Adventure" ] }
     ]
 
 
-getVideogameGenres : List Videogame -> List String
+getVideogameGenres : List Videogame -> List (List String)
 getVideogameGenres lista3 =
-    List.concatMap .genres lista3
+    List.map .genres lista3
 
 
 type alias Laptop =
-    { brand : String
-    , model : String
-    , ram : String
-    , screenSize : String
-    }
+    { brand : String, model : String, ram : String, screenSize : String }
 
 
 myLaptop : Laptop
 myLaptop =
-    { brand = "Apple"
-    , model = "MacBook Pro"
-    , ram = "16GB"
-    , screenSize = "14 pulgadas"
-    }
+    { brand = "Apple", model = "MacBook Pro", ram = "16GB", screenSize = "14 pulgadas" }
 
 
 main : Html msg

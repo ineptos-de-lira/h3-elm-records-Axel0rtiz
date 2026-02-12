@@ -1,6 +1,6 @@
 module Helper exposing (..)
 
-import Html exposing (Html, div, li, text, ul)
+import Html exposing (Html, div, h1, li, text, ul)
 
 
 add2 : Int -> Int -> Int
@@ -87,7 +87,8 @@ main : Html msg
 main =
     div []
         [ div []
-            [ ul []
+            [ h1 [] [ text "My laptop" ]
+            , ul []
                 [ li [] [ text ("Ram: " ++ .ram myLaptop) ]
                 , li [] [ text ("Modelo: " ++ .model myLaptop) ]
                 , li [] [ text ("Marca: " ++ .brand myLaptop) ]

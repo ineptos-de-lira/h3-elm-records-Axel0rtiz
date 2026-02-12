@@ -1,5 +1,7 @@
 module Helper exposing (..)
 
+import Html exposing (Html, div, li, text, ul)
+
 
 add2 : Int -> Int -> Int
 add2 int1 int2 =
@@ -90,3 +92,34 @@ videogame =
 getVideogameGenres : List Videogame -> List String
 getVideogameGenres lista3 =
     List.concatMap .genres lista3
+
+
+type alias Laptop =
+    { brand : String
+    , model : String
+    , ram : String
+    , screenSize : String
+    }
+
+
+myLaptop : Laptop
+myLaptop =
+    { brand = "Apple"
+    , model = "MacBook Pro"
+    , ram = "16GB"
+    , screenSize = "14 pulgadas"
+    }
+
+
+main : Html msg
+main =
+    div []
+        [ div []
+            [ ul []
+                [ li [] [ text ("Ram: " ++ myLaptop.ram) ]
+                , li [] [ text ("Modelo: " ++ myLaptop.model) ]
+                , li [] [ text ("Marca: " ++ myLaptop.brand) ]
+                , li [] [ text ("Pulgadas: " ++ myLaptop.screenSize) ]
+                ]
+            ]
+        ]

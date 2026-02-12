@@ -1,28 +1,14 @@
 module Helper exposing (..)
 
-import Html.Attributes exposing (name)
-
-
-
--- add2
-
 
 add2 : Int -> Int -> Int
 add2 int1 int2 =
     int1 + int2
 
 
-
--- add3
-
-
 add3 : Float -> Float -> Float -> Float
 add3 val1 val2 val3 =
     val1 + val2 + val3
-
-
-
--- calc
 
 
 calc : Int -> Int -> (Int -> Int -> Int) -> Int
@@ -69,14 +55,13 @@ students =
 
 onlyStudents : List Students -> List String
 onlyStudents lista2 =
-    List.map
+    List.filterMap
         (\u ->
-            case .utype u of
-                "Student" ->
-                    .name u
+            if u.utype == "Student" then
+                Just u.name
 
-                _ ->
-                    ""
+            else
+                Nothing
         )
         lista2
 
